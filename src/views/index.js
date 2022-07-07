@@ -1,6 +1,6 @@
 import Login from "./login";
 import Dashboard from "./dashboard";
 import Reset from "./reset";
-import Register from "./register";
+import Rating from "./rating";
 
-export { Login, Dashboard, Reset, Register };
+export { Login, Dashboard, Reset, Rating };

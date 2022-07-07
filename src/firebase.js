@@ -18,6 +18,7 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
+import { data } from "autoprefixer";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,

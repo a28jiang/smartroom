@@ -6,8 +6,9 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 import { Chart } from "./barchart";
 import { LineChart } from "./linechart";
 import { Stats } from "./stats";
+import { Scale } from "./scale";
 
-const Dashboard = () => {
+const Rating = () => {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
@@ -32,63 +33,69 @@ const Dashboard = () => {
     fetchUserName();
   }, [user, loading]);
 
+  const questions = [
+    {
+      q: "How well you able to focus in class today?",
+      l: "Not very well",
+      h: " Great focus",
+    },
+    {
+      q: "How comfortable was the classroom?",
+      l: "Extremely uncomfortable",
+      h: " Very comfortable",
+    },
+    {
+      q: "Rate your productivity during class time?",
+      l: "Low productivity",
+      h: " Very productive",
+    },
+    {
+      q: "How often did you feel distracted",
+      l: "Not often",
+      h: " Very often",
+    },
+    {
+      q: "Reflect on your overall cognitive ability today?",
+      l: "Poor",
+      h: " Excellent",
+    },
+    { q: "Rate your overall classroom experience", l: "Poor", h: " Excellent" },
+  ];
+
   return (
     <div class="hero min-h-screen bg-base-200">
       <div class="flex items-stretch justify-center w-full text-center">
         <div class="max-w-xxl">
-          <div class="grid grid-cols-3 gap-4">
+          <div class="text-left grid grid-cols-3 gap-4">
             <div>
               <h1 class="text-6xl font-bold font-['playfair'] py-6">
                 <span class="text-accent">smart</span>
                 <span>room.</span>
               </h1>
             </div>
-            <div class="col-span-2">
-              <Stats />
-            </div>
-            <div class="h-80">
-              <LineChart
-                title="Temperature"
-                color="rgba(210,163,118,0.5)"
-                range={[20, 22.5]}
-              />
-            </div>
-            <div class="h-80">
-              <LineChart
-                title="Humidex"
-                color="rgba(202,130,130,0.5)"
-                range={[32, 34.5]}
-              />
-            </div>
-            <div class="h-80">
-              <LineChart
-                title="Lighting"
-                color="rgba(209,191,142,0.5)"
-                range={[420, 430]}
-              />
-            </div>
+            <div class="col-span-2" />
           </div>
-          <Chart />
+          <div class="text-left mt-12 h-1/2 overflow-y-scroll">
+            {questions.map((question) => (
+              <div class="col-span-3">
+                <Scale
+                  question={question.q}
+                  lowText={question.l}
+                  highText={question.h}
+                />
+              </div>
+            ))}
+          </div>
+
           <div class="flex justify-end gap-4 py-8">
             <button class="btn btn-outline" onClick={logout}>
-              Sign Out
-            </button>
-            <button
-              class="btn btn-outline btn-secondary"
-              onClick={() =>
-                window.open(
-                  "https://docs.google.com/spreadsheets/d/1dM6hKaFLdIw1UQQdTN0WyQxMID1535u9DQULfw9l5ns",
-                  "_blank"
-                )
-              }
-            >
-              Advocacy Resources
+              Reset
             </button>
             <button
               class="btn btn-outline btn-accent"
-              onClick={() => navigate("/rating")}
+              onClick={() => navigate("/dashboard")}
             >
-              Submit Rating
+              Finish
             </button>
           </div>
         </div>
@@ -97,4 +104,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Rating;

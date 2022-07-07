@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Login, Register, Reset, Dashboard } from "./views";
-import "./App.css";
+import { Login, Reset, Dashboard, Rating } from "./views";
+require("typeface-playfair-display");
 
 function App() {
   return (
@@ -8,9 +8,9 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/rating" element={<Rating />} />
         </Routes>
       </Router>
     </div>
