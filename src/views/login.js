@@ -51,7 +51,7 @@ const Login = () => {
             Optimize your classroom experience through <br />
             crowd-sourced data visualizations.
           </p>
-          <img src={hero} class="h-64 -mt-16 ml-10" />
+          <img src={hero} class="h-64 -mt-16" />
         </div>
         <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div class="card-body">

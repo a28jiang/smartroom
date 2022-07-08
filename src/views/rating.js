@@ -40,26 +40,30 @@ const Rating = () => {
       h: " Great focus",
     },
     {
-      q: "How comfortable was the classroom?",
+      q: "How comfortable was the classroom environment?",
       l: "Extremely uncomfortable",
       h: " Very comfortable",
     },
     {
-      q: "Rate your productivity during class time?",
+      q: "Rate your productivity during class time.",
       l: "Low productivity",
       h: " Very productive",
     },
     {
-      q: "How often did you feel distracted",
+      q: "How often did you feel distracted in class?",
       l: "Not often",
       h: " Very often",
     },
     {
-      q: "Reflect on your overall cognitive ability today?",
+      q: "How did you find your overall cognitive ability today?",
       l: "Poor",
       h: " Excellent",
     },
-    { q: "Rate your overall classroom experience", l: "Poor", h: " Excellent" },
+    {
+      q: "Rate your overall classroom experience today.",
+      l: "Poor",
+      h: " Excellent",
+    },
   ];
 
   return (

@@ -24,30 +24,14 @@ ChartJS.register(
   Legend
 );
 
-const labels = [
-  "8:00",
-  "9:00",
-  "10:00",
-  "11:00",
-  "12:00",
-  "13:00",
-  "14:00",
-  "15:00",
-  "16:00",
-];
-
-const LineChart = ({ color, title, values, range }) => {
+const LineChart = ({ color, title, values, labels }) => {
   const data = {
     labels,
     datasets: [
       {
         fill: true,
         label: title,
-        data: values
-          ? values
-          : labels.map(() =>
-              faker.datatype.number({ min: range[0], max: range[1] })
-            ),
+        data: values,
         borderColor: "gray",
         backgroundColor: color,
       },
@@ -58,15 +42,23 @@ const LineChart = ({ color, title, values, range }) => {
     maintainAspectRatio: false,
     scales: {
       y: {
-        suggestedMin: range[0] - 5,
-        suggestedMax: range[1] + 5,
+        suggestedMin: Math.min.apply(Math, values) - 5,
+        suggestedMax: Math.max.apply(Math, values) + 5,
         grid: {
           color: "rgba(255,255,255,0.1)",
+        },
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 5,
         },
       },
       x: {
         grid: {
           display: false,
+        },
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 4,
         },
       },
     },
